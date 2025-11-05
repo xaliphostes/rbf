@@ -2,6 +2,8 @@
 
 A TypeScript implementation of scipy's `scipy.interpolate.Rbf` with support for thin plate spline and other radial basis functions.
 
+## [Demo](https://xaliphostes.github.io/rbf/)
+
 ## Features
 
 - ✅ Thin plate spline interpolation (matching scipy's `function='thin_plate'`)

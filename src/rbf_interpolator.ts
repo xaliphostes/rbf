@@ -119,6 +119,23 @@ export class RbfInterpolator {
         return points.map(point => this.interpolatePoint(point));
     }
 
+    /**
+     * Interpolate at a single point
+     * @param point - Coordinate array [x, y, z, ...]
+     * @returns Interpolated value
+     */
+    interpolatePoint(point: number[]): number {
+        if (point.length !== this.nodes[0].length) {
+            throw new Error(`Point dimension (${point.length}) must match training data dimension (${this.nodes[0].length})`);
+        }
+
+        let result = 0;
+        for (let i = 0; i < this.nodes.length; i++) {
+            result += this.weights[i] * this.norm(point, this.nodes[i]);
+        }
+        return result;
+    }
+
     // ------------------ private methods ------------------
 
     /**
@@ -282,22 +299,5 @@ export class RbfInterpolator {
         }
 
         return x;
-    }
-
-    /**
-     * Interpolate at a single point
-     * @param point - Coordinate array [x, y, z, ...]
-     * @returns Interpolated value
-     */
-    private interpolatePoint(point: number[]): number {
-        if (point.length !== this.nodes[0].length) {
-            throw new Error(`Point dimension (${point.length}) must match training data dimension (${this.nodes[0].length})`);
-        }
-
-        let result = 0;
-        for (let i = 0; i < this.nodes.length; i++) {
-            result += this.weights[i] * this.norm(point, this.nodes[i]);
-        }
-        return result;
     }
 }
