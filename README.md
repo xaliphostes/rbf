@@ -39,8 +39,7 @@ console.log(interpolatedValues)
 
 ### Thin Plate Spline (default)
 
-Formula: `φ(r) = r²                 minValue = Math.min(minValue, value);
-log(r)` where `r` is the Euclidean distance
+Formula: `φ(r) = φ(r) = r² log(r)` where `r` is the Euclidean distance
 
 - Best for smooth interpolation
 - Commonly used in image warping and scattered data interpolation
