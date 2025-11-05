@@ -7,11 +7,6 @@ interface Point {
     value: number;
 }
 
-// interface ColorMap {
-//     name: string;
-//     colors: [number, number, number][];
-// }
-
 class RBFVisualizer {
     private canvas: HTMLCanvasElement;
     private ctx: CanvasRenderingContext2D;

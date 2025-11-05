@@ -1,13 +1,15 @@
 {
-    "name": "rbf-interpolator-visualizer",
+    "name": "rbf",
     "version": "1.0.0",
-    "description": "Interactive 2D visualization of RBF interpolation with thin plate spline",
+    "description": "Interactive 2D visualization of RBF interpolation",
     "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
         "deploy": "npm run build && gh-pages -d dist"
     },
+    "author": "xaliphostes",
+    "license":"MIT",
     "devDependencies": {
         "typescript": "^5.3.3",
         "vite": "^5.0.10",
