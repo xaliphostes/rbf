@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBF Interpolator Visualizer</title>
+  <script type="module" crossorigin src="/assets/index-CcawaYqh.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-ykxDrplf.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>RBF Interpolator Visualizer</h1>
+            <p>Interactive 2D visualization of Radial Basis Function interpolation with Thin Plate Spline</p>
+        </header>
+
+        <div class="container">
+            <div class="controls-panel">
+                <div class="control-section">
+                    <h3>Settings</h3>
+
+                    <div class="control-group">
+                        <label for="rbf-function">RBF Function:</label>
+                        <select id="rbf-function">
+                            <option value="thin_plate" selected>Thin Plate Spline</option>
+                            <option value="multiquadric">Multiquadric</option>
+                            <option value="inverse_multiquadric">Inverse Multiquadric</option>
+                            <option value="gaussian">Gaussian</option>
+                            <option value="linear">Linear</option>
+                            <option value="squared">Squared</option>
+                            <option value="quintic">Quintic</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="grid-resolution">Grid Resolution: <span id="grid-res-value">30x30</span></label>
+                        <input type="range" id="grid-resolution" min="10" max="200" value="30" step="5">
+                    </div>
+
+                    <div class="control-group">
+                        <label for="smoothing">Smoothing: <span id="smooth-value">0.01</span></label>
+                        <input type="range" id="smoothing" min="0" max="1" value="0" step="0.01">
+                    </div>
+
+                    <div class="control-group">
+                        <label for="colormap">Color Map:</label>
+                        <select id="colormap">
+                            <option value="viridis">Viridis</option>
+                            <option value="plasma">Plasma</option>
+                            <option value="turbo" selected>Turbo</option>
+                            <option value="coolwarm">Cool-Warm</option>
+                            <option value="rainbow">Rainbow</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label>
+                            <input type="checkbox" id="show-points" checked>
+                            Show Training Points
+                        </label>
+                    </div>
+
+                    <div class="control-group">
+                        <label>
+                            <input type="checkbox" id="show-contours" checked>
+                            Show Contours
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Preset Examples</h3>
+                    <button class="preset-btn" data-preset="peaks">Peaks Function</button>
+                    <button class="preset-btn" data-preset="ripple">Ripple Pattern</button>
+                    <button class="preset-btn" data-preset="random">Random Points</button>
+                    <button class="preset-btn" data-preset="gradient">Simple Gradient</button>
+                    <button class="preset-btn" data-preset="saddle">Saddle Point</button>
+                    <button class="preset-btn" data-preset="h2_frantz">H2 Frantz (Real Data)</button>
+                </div>
+
+                <div class="control-section">
+                    <h3>Training Points</h3>
+                    <div id="points-list"></div>
+                    <button id="add-point-btn" class="action-btn">+ Add Point</button>
+                    <button id="upload-csv-btn" class="action-btn">📁 Upload CSV</button>
+                    <input type="file" id="csv-file-input" accept=".csv" style="display: none;">
+                    <button id="clear-points-btn" class="action-btn danger">Clear All</button>
+                </div>
+
+                <div class="info-section">
+                    <h3>Info</h3>
+                    <p><strong>Click on canvas</strong> to add training points</p>
+                    <p><strong>Point count:</strong> <span id="point-count">0</span></p>
+                    <p><strong>Interpolation time:</strong> <span id="interp-time">-</span></p>
+                </div>
+            </div>
+
+            <div class="canvas-container">
+                <canvas id="visualization-canvas"></canvas>
+                <div id="canvas-info">
+                    <span id="hover-coords"></span>
+                </div>
+                <div id="colorbar-container">
+                    <canvas id="colorbar"></canvas>
+                    <div class="colorbar-labels">
+                        <span id="colorbar-min">0</span>
+                        <span id="colorbar-max">1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
