@@ -23,7 +23,7 @@ class RBFVisualizer {
     private canvasHeight = 600;
 
     private rbfFunction = 'thin_plate';
-    private gridResolution = 30;
+    private gridResolution = 200;
     private smoothing = 0.01;
     private currentColorMap = 'turbo';
     private showPoints = true;
